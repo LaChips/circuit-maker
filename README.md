@@ -7,3 +7,5 @@
 ![image](https://github.com/LaChips/circuit-maker/assets/41838548/84c74f6f-8a44-4cbe-b0d5-f5bb19643857)
 ![image](https://github.com/LaChips/circuit-maker/assets/41838548/f73fa3cc-71d8-468a-9f26-e90bb353e2a0)
 ![image](https://github.com/LaChips/circuit-maker/assets/41838548/218e8d21-783c-4df2-9354-603ba6d2adde)
+
+NOTE: I don't know much about electronics, this might not accurately represents actual real life circuits
