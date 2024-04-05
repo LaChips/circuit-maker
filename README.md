@@ -1,6 +1,9 @@
 "# circuit-maker" 
 
 ## Full Adder
+
+Building and running : https://www.youtube.com/watch?v=IkiPVbM_pEQ
+
 ![image](https://github.com/LaChips/circuit-maker/assets/41838548/e520a1c4-de06-45c5-82e2-fd29a30ffab4)
 ![image](https://github.com/LaChips/circuit-maker/assets/41838548/da56f2ce-615e-4636-8025-55b697053376)
 ![image](https://github.com/LaChips/circuit-maker/assets/41838548/9ac8d590-6a2a-4091-9085-529436e0e42e)
