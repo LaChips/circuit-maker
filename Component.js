@@ -9,7 +9,7 @@ class Component {
 		this.rotation = 0;
 		this.id = getRandomString(12);
 		this.tick = 0;
-		this.debug_tick_delay = 2000;
+		this.debug_tick_delay = 1000;
 		this.show_debug = false;
 		this.nameOffsetY = 0;
 	}

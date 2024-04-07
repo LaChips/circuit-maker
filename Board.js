@@ -39,6 +39,24 @@ class Board {
 		}
 	}
 
+	removeSelectedComponent() {
+		if (this.selectedComponent) {
+			const component = this.components.find((comp) => comp._id === this.selectedComponent._id)
+			if (!component) {
+				throw new Error("Can't find component to remove");
+			}
+			console.log({component});
+			const linkIdsToRemove = [
+				...component.pins_in.map(pin => [...pin.connect.map((link) => link._id)]).reduce((prev, current) => [...prev, current]),
+				...component.pins_out.map(pin => [...pin.connect.map((link) => link._id)]).reduce((prev, current) => [...prev, current])
+			];
+			console.log({linkIdsToRemove});
+			this.links = this.links.filter((link) => linkIdsToRemove.indexOf(link._id) === -1);
+			console.log({comps: this.components, links: this.links});
+			this.components = this.components.filter(comp => comp._id !== component._id);
+		}
+	}
+
 	createLink(from, to) {
 		let link = new Link(this.CM.ctx, from, to);
 		this.links.push(link);
@@ -49,8 +67,9 @@ class Board {
 	    this.CM.ctx.rect(comp.position.x, comp.position.y, comp.width, comp.height);
 	    let res = false;
 	    if (this.CM.ctx.isPointInPath(x, y)) {
-	    	if (!this.hoveredComponent)
+	    	if (!this.hoveredComponent) {
 	    		this.hoveredComponent = comp;
+			}
 	    	res = true;
 	    }
 	    else if (this.checkHoverComponentPins(comp, comp.pins_in, x, y, "pins_in"))
@@ -81,8 +100,8 @@ class Board {
 	moveSelectedComponent(diffX, diffY) {
 		if (this.selectedComponent && this.mouseDown && !this.selectedStartPin) {
 		    this.selectedComponent.position = {
-		    	x: this.selectedComponent.position.x + diffX,//x - this.selectedComponent.width / 2,
-		    	y: this.selectedComponent.position.y + diffY//y - this.selectedComponent.height / 2
+		    	x: this.selectedComponent.position.x + diffX,
+		    	y: this.selectedComponent.position.y + diffY
 		    };
 		    return true;
 	    }
@@ -156,7 +175,7 @@ class Board {
 		}
 		if (!this.hoveredComponent)
 			this.selectedComponent = false;
-		if (this.prevMousePos.x === this.mouseDownPos.x && this.prevMousePos.y === this.mouseDownPos.y) {
+		if (this.hoveredComponent && this.prevMousePos.x === this.mouseDownPos.x && this.prevMousePos.y === this.mouseDownPos.y) {
 			this.hoveredComponent.onClick();
 		}
 		this.mouseDownPos = false;

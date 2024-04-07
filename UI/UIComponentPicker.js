@@ -27,6 +27,9 @@ class UIComponentPicker {
 		this.addComponentInList("GATE_NOR");
 		this.addComponentInList("GATE_XOR");
 		this.addComponentInList("GATE_XNOR");
+		this.addComponentInList("FULL_ADDER");
+		this.addComponentInList("SEVEN_SEGMENT_DISPLAY");
+		this.addComponentInList("BCD_TO_SEVEN_SEGMENT");
 		console.log("UIComponentPicker ready");
 	}
 

@@ -61,7 +61,6 @@ class BATTERY extends Component {
 	update() {
 		this.updateTick();
 		const isClosed = this.isCircuitClosed();
-		this.debug_log({isClosed, out: this.pins_out[0].value});
 		if (isClosed)
 			this.pins_out[0].value = 1;
 		else {
@@ -98,12 +97,6 @@ class BATTERY extends Component {
 		for (let line of this.assets) {
 			let path = new Path2D(line);
 			this.ctx.stroke(path);
-		}
-	}
-
-	debug_log(data) {
-		if (this.show_debug) {
-			console.log(data);
 		}
 	}
 

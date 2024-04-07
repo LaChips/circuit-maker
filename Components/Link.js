@@ -11,6 +11,7 @@ class Link {
 		}
 		else
 			throw new Error("Links can only be created to identical pin's types");
+		this._id = Math.random();
 		this.ctx = ctx;
 		this.fromComponent = f.comp;
 		this.fromComponentPinIndex = f.pin_index;
@@ -20,11 +21,13 @@ class Link {
 		this.toComponentPinType = t.pin_type;
 		this.toComponent[t.pin_type][t.pin_index].connect.push({
 			...this.fromComponent[f.pin_type][f.pin_index],
-			fromComponent: {...f}
+			fromComponent: {...f},
+			_id: this._id,
 		});
 		this.fromComponent[f.pin_type][f.pin_index].connect.push({
 			...this.toComponent[t.pin_type][t.pin_index],
-			toComponent: {...t}
+			toComponent: {...t},
+			_id: this._id,
 		});
 	}
 

@@ -23,6 +23,9 @@ class EventManager {
 		CM.canvas.onkeydown = function(e) {
 			if (e.key == 'r')
 				CM.board.rotateSelectedComponent();
+			if (e.key == 'Backspace') {
+				CM.board.removeSelectedComponent();
+			}
 		}
 		console.log("EventManager ready");
 	}
